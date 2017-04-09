@@ -12,9 +12,30 @@ avi = Teacher.new
 avi.first_name = "Avi"
 avi.last_name = "Flombaum"
 
+jim = User.new
+jim.first_name = "Jimmy"
+jim.last_name = "Jazz"
 
-some_knowledge = avi.teach 
+sabrina = Student.new
+sabrina.first_name = "Sabrina"
 
-steve.learn(some_knowledge)
+some_knowledge = avi.teach
 
-puts "Steve just learned this important knowledge: '#{steve.knowledge.first}' from Avi"
+def teach_student_some_number_of_things(student, teacher, number_of_things)
+  number_of_things.times do
+    student.learn(teacher.teach)
+  end
+end
+
+def tell_world_what_student_learned(student, teacher)
+  #student.learn(some_knowledge)
+  student.knowledge.each do |tidbit|
+    puts "#{student.first_name} just learned this important knowledge: '#{tidbit}' from #{teacher.first_name}"
+  end
+end
+
+teach_student_some_number_of_things(steve, avi, 5)
+tell_world_what_student_learned(steve, avi)
+
+teach_student_some_number_of_things(sabrina, avi, 10)
+tell_world_what_student_learned(sabrina, avi)
